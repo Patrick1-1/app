@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button request</title>
+</head>
+<body>
+    <h1>Вітаю!</h1>
+    <button onclick="makeRequest()">Push to request server</button>
+    <div>
+        <img id="Routes_image", src="#" alt="Зображення", style="width: 600px; height: 600px;">
+
+    </div>
+
+    <script>
+        function makeRequest() {
+            fetch('http://127.0.0.1:5005/api/data') // Server endpoint
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById("Routes_image").src = `data:image/png;base64,${data}`;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
